@@ -1,0 +1,44 @@
+<% if current_user %>
+
+    <%= render :partial=>"/add_assets_links" %>
+  
+    <% if current_user.can_be_superuser? %>
+      <% if current_user.is_being_superuser?(session) %>
+        <%= link_to "Stop being superuser", superuser_path %>
+      <% else %>
+        <%= link_to "Become superuser", superuser_path %>
+      <% end %>
+    <% end %>
+
+<% end %>
+
+<div id="user_util_links">
+
+<% if current_user %>
+
+    <strong><%= current_user.to_s %></strong>  
+    
+    <%= link_to "My Account", edit_user_registration_path %>
+    | 
+    <%= link_to 'Bookmarks', bookmarks_path %>
+    |
+    <%= link_to "Saved Searches", saved_searches_path %>
+    | 
+<% end %>
+
+
+<%= link_to "Selected Items", folder_index_path %> (<span id="folder_number"><%= "#{session[:folder_document_ids] ? session[:folder_document_ids].length : 0}" %></span>)
+|
+<%= link_to "Search History", search_history_path %>
+
+<% if current_user %>
+    | 
+    <%= link_to "Log Out", destroy_user_session_path %>
+
+<% else %>
+    | 
+    <%= link_to 'Login', new_user_session_path %>
+
+<% end %>
+
+</div>

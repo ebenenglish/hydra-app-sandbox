@@ -51,7 +51,10 @@ class CatalogController < ApplicationController
     # facet bar
     config.add_facet_field 'object_type_facet', :label => 'Format' 
     config.add_facet_field 'pub_date', :label => 'Publication Year' 
-    config.add_facet_field 'subject_topic_facet', :label => 'Topic', :limit => 20 
+    config.add_facet_field 'has_model_s', :label => 'Fedora Model'
+    config.add_facet_field 'subject_topic_facet', :label => 'Topic', :limit => 20
+    config.add_facet_field 'journal_title_info_main_title_facet', :label => 'Journal', :limit => true
+    config.add_facet_field 'conference_facet', :label => 'Conference', :limit => true 
     config.add_facet_field 'language_facet', :label => 'Language', :limit => true 
     config.add_facet_field 'lc_1letter_facet', :label => 'Call Number' 
     config.add_facet_field 'subject_geo_facet', :label => 'Region' 
